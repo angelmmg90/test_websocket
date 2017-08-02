@@ -9,6 +9,7 @@ public class WordgameClientEndpoint {
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
 
+    /*When the connection is opened we send a start message to the server*/
     @OnOpen
     public void onOpen(Session session){
         logger.info("Connected ..." + session.getId());
@@ -21,6 +22,7 @@ public class WordgameClientEndpoint {
 
     }
 
+    /*The method  annotated with @OnMessage is called each time a message is received from server*/
     @OnMessage
     public String onMessage(String message, Session session){
         BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
@@ -33,6 +35,8 @@ public class WordgameClientEndpoint {
         }
     }
 
+    /*The method annotated with @OnClose is called when WebSocket connec
+    tion is closed.*/
     @OnClose
     public void onClose(Session session, CloseReason closeReason){
         logger.info(String.format("Session %s close because of %s", session.getId()));
