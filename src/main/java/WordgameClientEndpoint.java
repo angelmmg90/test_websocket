@@ -1,7 +1,4 @@
-import javax.websocket.ClientEndpoint;
-import javax.websocket.OnMessage;
-import javax.websocket.OnOpen;
-import javax.websocket.Session;
+import javax.websocket.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -34,6 +31,12 @@ public class WordgameClientEndpoint {
         }catch(IOException e){
             throw new RuntimeException(e);
         }
+    }
+
+    @OnClose
+    public void onClose(Session session, CloseReason closeReason){
+        logger.info(String.format("Session %s close because of %s", session.getId()));
+
     }
 
 }
