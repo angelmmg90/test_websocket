@@ -7,11 +7,15 @@ import java.util.logging.Logger;
 public class WordgameServerEndpoint {
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
+    /*The @OnOpen annotation is used to annotate a method
+    which will be called after WebSocket connection is opened.*/
     @OnOpen
     public void onOpen(Session session){
         logger.info("Connected ..." + session.getId());
     }
 
+    /*The @OnMessage annotation is used to annotate
+    a method which will be called each time a message is received.*/
     @OnMessage
     public String onMessage(String message, Session session){
         switch(message){
@@ -30,6 +34,8 @@ public class WordgameServerEndpoint {
     }
 
 
+    /*The @OnClose annotation is used to annotate
+    a method which will be called when WebSocket connection is closed*/
     @OnClose
     public void onClose(Session session, CloseReason closeReason){
         logger.info(String.format("Session %s closed because of %s", session.getId(),
