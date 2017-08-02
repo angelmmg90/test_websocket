@@ -3,6 +3,8 @@ import org.glassfish.tyrus.server.Server;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+/*WebSocket Server it is neccesary for deploying our websocket server endpoint.
+The server is created using tyrus server API.*/
 public class WebSocketServer {
 
     public static void main(String[] args){
