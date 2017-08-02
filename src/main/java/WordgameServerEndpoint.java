@@ -1,7 +1,4 @@
-import javax.websocket.CloseReason;
-import javax.websocket.OnMessage;
-import javax.websocket.OnOpen;
-import javax.websocket.Session;
+import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -31,6 +28,16 @@ public class WordgameServerEndpoint {
         }
         return message;
     }
+
+
+    @OnClose
+    public void onClose(Session session, CloseReason closeReason){
+        logger.info(String.format("Session %s closed because of %s", session.getId(),
+                closeReason));
+
+    }
+
+
 
 
 
